@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import store from './store';
+import Login from './Login';
+import Home from './Home';
 import './App.css';
+import Card from './card';
+import Sumsung from './Moblies./sumsung';
+import Iphone from './Moblies./iphone';
+import Redmi from './Moblies./Redmi';
+import Register from './Register/register';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+      <Provider store={store}>
+        <Route path='/login' render={Login} />
+        <Route path='/register' render={Register}></Route>
+        <Route path='/home' render={Home} />
+        <Route path='/card' render={Card}></Route>
+        <Route path='/sumsung' render={Sumsung}></Route>
+        <Route path='/iphone' render={Iphone}></Route>
+        <Route path='/redmi' render={Redmi}></Route>
+        
+      </Provider>
+    </Router>
     );
   }
 }
